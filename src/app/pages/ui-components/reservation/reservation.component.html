@@ -1,0 +1,69 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid"></div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row mt-3">
+        <div class="col">
+          
+
+            <div class="form-group">
+                <label for="validFilter">Filter by Validity:</label>
+                <select class="form-control" id="validFilter" [(ngModel)]="validFilter" (change)="applyFilters()">
+                    <option value="">All</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <button class="btn-add" (click)="loadReservations()">Reset</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="mb-0">List Reservation</h3>
+
+                        <button class="btn-add" (click)="onAddClick()">Add</button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Num Reservation</th>
+                                <th scope="col">Annee Reservation</th>
+                                <th scope="col">Validité</th>
+                                <th scope="col">Etudiant</th>
+                                <th scope="col">chamber</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let reservation of reservations">
+                                <td>{{ reservation.idReservation }}</td>
+                                <td>{{ reservation.anneeReservation | date }}</td>
+                                <td>{{ reservation.estValide ? 'Yes' : 'No' }}</td>
+                                <td>
+                                    <ul>
+                                        <li *ngFor="let etudiant of reservation.etudiants">{{ etudiant.cin }}</li>
+                                    </ul>
+                                </td>
+                                <td>{{ reservation.chamber.numerochamber }}</td>
+                                <td>{{ reservation.chamber.typeC }}</td>
+                                <td>
+                                    <button class="btn-edit" (click)="onEditClick(reservation.idReservation)">Edit</button>
+                                    <button class="btn-delete" (click)="onDeleteClick(reservation.idReservation)">Delete</button>
+                                    <button class="btn-add" (click)="onPdfClick(reservation.idReservation)">Imprimer</button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

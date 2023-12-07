@@ -1,0 +1,34 @@
+
+<div class="container">
+  <h2 class="mb-4">Add Reservation</h2>
+  <form (ngSubmit)="onSubmit()" #reservationForm="ngForm">
+
+    <div class="form-group">
+      <label for="anneeReservation">Year of Reservation:</label>
+      <input type="date" id="anneeReservation" name="anneeReservation" [(ngModel)]="reservation.anneeReservation" class="form-control" required>
+
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" id="estValide" name="estValide" [(ngModel)]="reservation.estValide" class="form-check-input">
+      <label class="form-check-label" for="estValide">Is Valid</label>
+    </div>
+
+    <div class="form-group">
+      <label for="selectedCin">Cin Etudiant:</label>
+      <select id="selectedCin" name="selectedCin" [(ngModel)]="selectedCin" class="form-control">
+        <option *ngFor="let student of etudiants" [value]="student.cin">{{ student.cin }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="SelectedChambre">Num Chambre:</label>
+      <select id="SelectedChambre" name="SelectedChambre" [(ngModel)]="SelectedChambre" class="form-control">
+        <option *ngFor="let chambre of chambres" [value]="chambre.numerochamber">{{ chambre.numerochamber }}</option>
+      </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+  </form>
+</div>

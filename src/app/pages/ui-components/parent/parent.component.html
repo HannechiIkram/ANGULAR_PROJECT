@@ -1,0 +1,8 @@
+<app-facture
+      [facturess]="factures"
+      (addFactureClick)="onAddFactureClick()"
+      (editFactureClick)="onEditFactureClick($event)"
+      (deleteFactureClick)="onDeleteFactureClick($event)"
+    ></app-facture>
+    <app-add-facture [factures]="facture" (submitFacture)="onSubmitFacture($event)"></app-add-facture>
+  

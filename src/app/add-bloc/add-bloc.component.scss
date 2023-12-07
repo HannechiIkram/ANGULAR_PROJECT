@@ -1,0 +1,52 @@
+/* Add your global styles here */
+/* ... */
+
+/* Style for the form container */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px; /* Adjust the width as needed */
+  margin: 20px;
+}
+
+/* Style for labels */
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for input fields */
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Style for error messages */
+div {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Style for the submit buttons */
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px; /* Add margin-right to create space between buttons */
+}
+
+input[type="submit"]:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+/* Add additional styles as needed */
+/* ... */

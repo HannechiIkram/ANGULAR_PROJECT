@@ -1,0 +1,9 @@
+
+<form #blocForm="ngForm" (ngSubmit)="update(blocForm.value)">
+    
+    <label>Nom Bloc</label>
+<input type="text" name="nomBloc" [(ngModel)]="bloc.nomBloc">
+<label>capacite Bloc</label>
+<input type="text" name="capaciteBloc" [(ngModel)]="bloc.capaciteBloc">
+<input type="submit" value="update" >
+</form>

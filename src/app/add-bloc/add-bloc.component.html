@@ -1,0 +1,19 @@
+
+<form [formGroup]="fg" [appBlocInputValidator]="submitted">
+    <label>Nom Bloc</label>
+    <input type="text" formControlName="nomBloc">
+    <div *ngIf="fg.get('nomBloc')?.hasError('invalidNomBloc')">
+      Please enter a valid value for "Nom Bloc" (alphanumeric characters and spaces only).
+    </div>
+  
+    <label>Capacite Bloc</label>
+    <input type="text" formControlName="capaciteBloc">
+    <div *ngIf="fg.get('capaciteBloc')?.hasError('invalidCapaciteBloc')">
+      Please enter a valid value for "Capacite Bloc" (numeric characters only).
+    </div>
+  
+    <input type="submit" value="save" [disabled]="fg.hasError('invalidForm')" (click)="submit()" >
+    <input type="submit" value="cancel"  (click)="onCancel()">
+
+</form>
+  

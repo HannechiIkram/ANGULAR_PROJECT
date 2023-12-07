@@ -1,0 +1,59 @@
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+    <div class="container-fluid"></div>
+  </div>
+  <div class="container mt-4">
+    <h2>Search Facture</h2>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Enter Name:</label>
+      <input id="nom" [(ngModel)]="searchTerm" (input)="advancedSearch()" class="form-control">
+    </div>
+  </div>
+  
+  <div class="container-fluid mt--7">
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header bg-transparent">
+            <div class="d-flex justify-content-between">
+              <h3 class="mb-0">List Facture</h3>
+              <button class="btn-add" (click)="onAddClick()">Add</button>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">ID Facture</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Paid</th>
+                  <th scope="col">Prix</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let facture of factures">
+                  <td>{{ facture.idFacture }}</td>
+                  <td>{{ facture.description }}</td>
+                  <td>{{ facture.paid ? 'Yes' : 'No' }}</td>
+                  <td>{{ facture.prix }}</td>
+                  <td>{{ facture.quantity }}</td>
+                  <td>{{ facture.customerName }}</td>
+                  <td>
+                    <button (click)="goToDetailFacture(facture.idFacture)">Voir Détails</button>
+
+                    <button class="btn-edit" (click)="onEditClick(facture.idFacture)">Edit</button>
+                    <button class="btn-delete" (click)="onDeleteClick(facture.idFacture)">Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

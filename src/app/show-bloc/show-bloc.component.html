@@ -1,0 +1,42 @@
+<!-- Add Bootstrap classes to the table -->
+<table id="pdfTable" class="table table-bordered text-nowrap mb-5 align-middle">
+  <thead class="text-dark fs-4">
+    <tr>
+      <th class="border-bottom-1">
+        <h6 class="fw-semibold mb-0">Name Bloc </h6>
+      </th>
+      <th class="border-bottom-1">
+        <h6 class="fw-semibold mb-0">Capacite Bloc</h6>
+      </th>
+      <th class="border-bottom-1">Actions</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let bloc of getCurrentPageBlocs(); let i = index">
+    <tr>
+      <td class="border-bottom-0">
+        <h6 class="fw-semibold mb-0 fs-4">{{ bloc.nomBloc }}</h6>
+      </td>
+      <td class="border-bottom-0">
+        <p class="mb-0 fw-normal">{{ bloc.capaciteBloc }}</p>
+      </td>
+      <td class="border-bottom-0">
+        <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+        <button class="btn btn-primary" (click)="update(bloc)">Update</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Style the "Ajouter un bloc" button -->
+<button type="button" class="btn btn-info" (click)="openDialog()">
+  <i class="fas fa-plus" style="margin-right: 10px;"></i>Ajouter un bloc
+</button>
+
+<div class="pagination">
+  <button class="btn btn-secondary btn-sm" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>{{ currentPage }} / {{ totalPages }}</span>
+  <button class="btn btn-secondary btn-sm" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+<!-- Keep the app-update-bloc component unchanged -->
+<app-update-bloc *ngIf="show" [bloc]="blocToUpdate" (notif)="traitement($event)" (updateUser)="changeTab($event)"></app-update-bloc>

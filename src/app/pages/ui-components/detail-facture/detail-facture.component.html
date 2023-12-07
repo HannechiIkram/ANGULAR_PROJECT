@@ -1,0 +1,10 @@
+
+      <p><strong>ID Facture:</strong> {{ facture.idFacture }}</p>
+      <p><strong>Description:</strong> {{ facture.description }}</p>
+      <p><strong>Paid:</strong> {{ facture.paid ? 'Yes' : 'No' }}</p>
+      <p><strong>Prix:</strong> {{ facture.prix }}</p>
+      <p><strong>Quantity:</strong> {{ facture.quantity }}</p>
+      <p><strong>Customer Name:</strong> {{ facture.customerName }}</p>
+  
+ 
+      <button (click)="downloadPDF()">Télécharger PDF</button>

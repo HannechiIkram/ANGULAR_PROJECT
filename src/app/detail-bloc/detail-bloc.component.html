@@ -1,0 +1,18 @@
+<div *ngIf="bloc">
+    <div class="container mt-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ bloc.nomBloc }}</h5>
+          <p class="card-text">Capacité: {{ bloc.capaciteBloc }}</p>
+        
+        
+        </div>
+      </div>
+    </div>
+    
+    <div class="container mt-3">
+      <button class="btn btn-primary" (click)="downloadPDF()">Download PDF</button>
+      <button class="btn btn-success" (click)="downloadExcel()">Download Excel</button>
+      <!-- <button class="btn btn-success" (click)="navigateToShowFoyer()">Back</button> -->
+    </div>
+  </div>
