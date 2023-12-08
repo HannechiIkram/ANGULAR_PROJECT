@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <h1 class="text-center">Add Foyer</h1>
+
+  <form #foyerForm="ngForm" (ngSubmit)="saveFoyer()" class="mt-3"    [appInvalidForm]="foyerForm.invalid">
+    <!-- Foyer details input fields -->
+    <div class="mb-3"    >
+      <label for="foyerName" class="form-label">Foyer Name:</label>
+      <input type="text" id="foyerName" name="foyerName" [(ngModel)]="foyer.nomFoyer" class="form-control" required>
+      <div *ngIf="foyerForm.controls['foyerName'].invalid && (foyerForm.controls['foyerName'].dirty || foyerForm.controls['foyerName'].touched)">
+        <small class="text-danger"  [appErrorMessage]="true">Le nom du foyer est requis.</small>
+      </div>
+    </div>
+    
+    
+    <div class="mb-3">
+      <label for="foyerCapacity" class="form-label">Foyer Capacity:</label>
+      <input type="number" id="foyerCapacity" name="foyerCapacity" [(ngModel)]="foyer.capaciteFoyer" class="form-control" required
+        [min]="1" [max]="10"   >
+      <div *ngIf="foyerForm.controls['foyerCapacity'].invalid && (foyerForm.controls['foyerCapacity'].dirty || foyerForm.controls['foyerCapacity'].touched)">
+        <small class="text-danger" *ngIf="foyerForm.controls['foyerCapacity'].hasError('required')"  [appErrorMessage]="true">La capacité est requise.</small>
+        <small class="text-danger" *ngIf="foyerForm.controls['foyerCapacity'].hasError('min') || foyerForm.controls['foyerCapacity'].hasError('max')"  [appErrorMessage]="true">La capacité doit être comprise entre 0 et 10.</small>
+      </div>
+    </div>
+    
+
+    <div class="mb-3">
+      <label for="selectUniversite" class="form-label">Select Universite:</label>
+      <select id="selectuniversite" name="selectuniversite" [(ngModel)]="selectuniversite" class="form-select custom-select" required>
+        <option *ngFor="let university of universities" [value]="university.idUniversite">{{ university.nomUniversite }}</option>
+      </select>
+      <div *ngIf="foyerForm.controls['selectuniversite'].invalid && (foyerForm.controls['selectuniversite'].dirty || foyerForm.controls['selectuniversite'].touched)">
+        <small class="text-danger"  [appErrorMessage]="true">Veuillez sélectionner une université.</small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="selectName" class="form-label">Select Name:</label>
+      <select id="selectName" name="selectName" [(ngModel)]="selectedName" class="form-select custom-select" required>
+        <option *ngFor="let name of availableNames" [value]="name">{{ name }}</option>
+      </select>
+      <div *ngIf="foyerForm.controls['selectName'].invalid && (foyerForm.controls['selectName'].dirty || foyerForm.controls['selectName'].touched)">
+        <small class="text-danger"  [appErrorMessage]="true">Veuillez sélectionner un region.</small>
+      </div>
+    </div>
+
+    <!-- Other Foyer details input fields go here -->
+    <div class="d-flex justify-content-between mt-1">
+      <button type="button" class="btn btn-secondary" (click)="onCancel()"><i class="fas fa-arrow-left"></i> Back</button>
+      <!-- Ajoutez la directive au bouton -->
+      <button type="submit" class="btn btn-primary" [disabled]="foyerForm.invalid" [appInvalidFormButtonColor]="foyerForm.invalid">
+           <i class="fas fa-plus"></i> Add Foyer
+      </button>
+
+    </div>
+  </form>
+</div>

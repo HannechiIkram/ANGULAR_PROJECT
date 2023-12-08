@@ -7,70 +7,39 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Dashboard',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/foyer/dashboard',
   },
   {
     displayName: 'Reservation',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/reservation',
+    iconName: 'list',
+    route: '/content/reservation',
   },
   {
     displayName: 'Facture',
-    iconName: 'rosette',
-    route: '/ui-components/facture',
+    iconName: 'list',
+    route: '/content/facture',
   },
-  {
-    navCap: 'Ui Components',
-  },
+
   {
     displayName: 'Bloc',
-    iconName: 'rosette',
-    route: '/ui-components/showBloc',
-  },
-  {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Lists',
     iconName: 'list',
-    route: '/ui-components/lists',
+    route: '/content/showBloc',
   },
   {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
+    displayName: 'Foyer',
+    iconName: 'list',
+    route: 'foyer',
   },
   {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    displayName: 'Universite',
+    iconName: 'list',
+    route: '/content/universite',
   },
   {
-    navCap: 'Auth',
+    displayName: 'Etudiant',
+    iconName: 'list',
+    route: '/content/ShowEtudiant',
   },
-  {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
-    route: '/authentication/register',
-  },
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
-  {
-    displayName: 'Sample Page',
-    iconName: 'aperture',
-    route: '/extra/sample-page',
-  },
+ 
+  
 ];

@@ -1,0 +1,112 @@
+<div class="container mt-4">
+  <h2>Search Foyers</h2>
+  <div class="mb-3">
+    <label for="nom" class="form-label">Enter Name:</label>
+    <input id="nom" [(ngModel)]="searchTerm" (input)="advancedSearch()" class="form-control">
+  </div>
+</div>
+
+      <div  class="add-button-container">
+      <button (click)=" openDialog()"   class="btn btn-primary btn-sm add-button"><i class="fas fa-plus"></i>  Add Foyer</button>
+      </div>
+       <table   class="table text-nowrap mb-5 align-middle">
+        <thead class="text-dark fs-4">
+          <tr>
+            <th class="border-bottom-1">
+              <h6 class="fw-semibold mb-0">Name Foyer </h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Capacite Foyer</h6>
+            </th>
+           
+            <!-- <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Universite</h6>
+            </th> -->
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Nb Blocs</h6>
+            </th>
+            <th class="border-bottom-0">
+              <h6 class="fw-semibold mb-0">Actions</h6>
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let foyer of getCurrentPageFoyers(); let i = index">
+         
+          <tr   *ngIf="foyer.etat">
+            <td class="border-bottom-0">
+              <p class="mb-0 fw-normal">{{ foyer.nomFoyer }}</p>
+            </td>
+            <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-0 fs-4">{{ foyer.capaciteFoyer }}</h6>
+            </td>
+            <!-- <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-1">{{ foyer.createdAt | date:'yy-MM-dd' }}</h6>
+            </td> -->
+            <!-- <td *ngIf="foyer.universite!=null">
+              <a class="btn btn-dark btn-sm">
+                  {{foyer.universite.nomUniversite}}</a>
+          </td>
+          <ng-template #nullDisplay>
+              <td>
+                  <a class="btn btn-warning btn-sm" style="background-color: rgb(231, 164, 102);">
+                      Non affecté
+                  </a>
+              </td>
+          </ng-template>  -->
+            <td class="border-bottom-0">
+              <h6 class="fw-semibold mb-1">{{ foyer.blocs.length}}</h6>
+            </td>
+         
+            <td class="border-bottom-0">
+              
+               <span>
+                <button (click)="navigateToUpdateFoyer(foyer.idFoyer)" routerLinkActive="active" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"> </i> Update </button>
+              </span>
+              <span> 
+              <button class="btn btn-primary" (click)="update(foyer)"><i class="fas fa-pencil-alt"> </i>Update</button>
+            </span>
+              <!-- <span  >
+                <button (click)="detailFoyer(i)" routerLinkActive="active" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Details</button>
+              </span> -->
+               <span  >
+                <button  (click)="navigateToDetailFoyer(foyer.idFoyer)" routerLinkActive="active" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Details</button>
+                <span>
+                  <button [disabled]="foyer.blocs.length === 10" class="btn btn-dribbble">
+                    <a [ngClass]="{'disabled-link': foyer.blocs.length === 10}" [routerLink]="['AssignerBlocs', foyer.idFoyer, foyer.capaciteFoyer, foyer.blocs.length]">
+                      Assign Blocks
+                    </a>
+                  </button>
+                </span>
+                
+                
+                <button  (click)="changestatus1(foyer)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete </button>
+              </span>
+            <!-- <span>
+                
+            <button  (click)="desaffecterBlocs(foyer.idFoyer)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Deaffecter </button>
+          </span> -->
+               
+            </td>
+          </tr> 
+          <ng-container *ngIf="show && i == j">
+            <tr colspan="3">
+              <td>{{ foyer.capaciteFoyer }}</td>
+              <td>{{ foyer.nomFoyer }}</td>
+              <td>{{ foyer.createdAt }}</td>
+              <td>{{ foyer.updatedAt }}</td>
+              <td>{{ foyer.universite.nomUniversite }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      
+      </table>
+      <div class="pagination">
+        <button class="btn btn-secondary btn-sm" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button class="btn btn-secondary btn-sm" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+      </div>
+      
+      <hr>
+<app-update-foyer-input *ngIf="show" [foyer]="foyerToUpdate" (notif)="traitement($event)" (updateUser)="changeTab($event)"></app-update-foyer-input>
+
+<hr>

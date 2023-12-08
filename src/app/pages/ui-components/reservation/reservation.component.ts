@@ -38,7 +38,7 @@ export class ReservationComponent {
     }
   }
   onEditClick(reservationId: number) {
-    this.router.navigate(['/ui-components/add-reservation', { reservationId: reservationId }]);
+    this.router.navigate(['/content/add-reservation', { reservationId: reservationId }]);
   }
 
   onPdfClick(reservationId: number) {
@@ -76,6 +76,6 @@ export class ReservationComponent {
   }
 
   onAddClick() {
-    this.router.navigate(['/ui-components/add-reservation'])
+    this.router.navigate(['/content/add-reservation'])
   }
 }

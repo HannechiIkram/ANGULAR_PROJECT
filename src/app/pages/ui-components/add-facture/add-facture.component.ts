@@ -56,7 +56,7 @@ export class AddFactureComponent {
     this.serviceFacture.addFacture(this.facture).subscribe(
       (d) => {
         console.log(d);
-        this.router.navigate(['/ui-components/facture']);
+        this.router.navigate(['/content/facture']);
       }
     );
   }

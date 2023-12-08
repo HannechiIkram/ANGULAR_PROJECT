@@ -1,0 +1,35 @@
+<form [formGroup]="formBuilder" class="container mt-5">
+  <div class="mb-3">
+    <label for="nomFoyer" class="form-label">Name:</label>
+    <input type="text" formControlName="nomFoyer" class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label for="capaciteFoyer" class="form-label">Capacite:</label>
+    <input
+      type="number"
+      formControlName="capaciteFoyer"
+      class="form-control"
+    >
+    <div *ngIf="formBuilder.get('capaciteFoyer')?.hasError('required') && formBuilder.get('capaciteFoyer')?.touched" class="text-danger"  [appErrorMessage]="true">
+      Capacite is required.
+    </div>
+    <div *ngIf="formBuilder.get('capaciteFoyer')?.hasError('capaciteRange')" class="text-danger"  [appErrorMessage]="true">
+      Capacite should be greater than 1 and less than or equal to 10.
+    </div>
+
+  </div>
+
+  <div class="form-buttons">
+    <button type="button" (click)="navigateToShowFoyer()" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</button>
+    <button
+  type="button"
+  [disabled]="isButtonDisabled"
+ 
+  (click)="update()"
+  class="btn btn-primary"   [appInvalidFormButtonColor]="formBuilder.invalid" >
+  <i class="fas fa-pencil-alt"></i> Update
+</button>
+
+  </div>
+</form>

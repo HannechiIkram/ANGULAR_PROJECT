@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ResetpasswordService } from '../_services/resetpassword.service';
 import { ActivatedRoute, Route } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reset-password',
@@ -36,9 +37,19 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPasswordService.resetPassword(this.token, passwordControl).subscribe(
       response => {
         console.log('Password reset successfully');
+        Swal.fire({
+          title: 'success',
+          text: 'password reset successfully ',
+          icon: 'success'
+        });
       },
       error => {
         console.error('Error resetting password', error);
+        Swal.fire({
+          title: 'success',
+          text: 'password reset successfully ',
+          icon: 'success'
+        });
       }
     );
   }

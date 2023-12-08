@@ -1,0 +1,36 @@
+<!-- Include Bootstrap (CSS) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Your Component -->
+<div class="container mt-5">
+  <h2 class="text-center">Update Universite</h2>
+
+  <form [formGroup]="formBuilder" (ngSubmit)="update()" class="mt-3">
+    <div class="form-group">
+      <label for="nomUniversite">University Name:</label>
+      <input type="text" id="nomUniversite" formControlName="nomUniversite" class="form-control"
+             [ngClass]="{ 'is-invalid': formBuilder.get('nomUniversite')?.invalid && (formBuilder.get('nomUniversite')?.dirty || formBuilder.get('nomUniversite')?.touched) }" />
+      <div *ngIf="formBuilder.get('nomUniversite')?.invalid && (formBuilder.get('nomUniversite')?.dirty || formBuilder.get('nomUniversite')?.touched)" class="invalid-feedback">
+        <div *ngIf="formBuilder.get('nomUniversite')?.hasError('required')" appMyButtonColor>University Name is required.</div>
+        <div *ngIf="formBuilder.get('nomUniversite')?.hasError('pattern')" appMyButtonColor>Invalid University Name. Only letters allowed (max length: 20).</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="adress">Address:</label>
+      <input type="text" id="adress" formControlName="adress" class="form-control"
+             [ngClass]="{ 'is-invalid': formBuilder.get('adress')?.invalid && (formBuilder.get('adress')?.dirty || formBuilder.get('adress')?.touched) }" />
+      <div *ngIf="formBuilder.get('adress')?.invalid && (formBuilder.get('adress')?.dirty || formBuilder.get('adress')?.touched)" class="invalid-feedback">
+        <div *ngIf="formBuilder.get('adress')?.hasError('required')"  appMyButtonColor>Address is required.</div>
+        <div *ngIf="formBuilder.get('adress')?.hasError('pattern')" appMyButtonColor>Invalid Address. Must contain at least one digit.</div>
+      </div>
+    </div>
+
+    <!-- Add more form controls as needed -->
+
+    <!-- Utilisez la propriété [disabled] pour désactiver le bouton lorsque le formulaire est invalide -->
+    <button type="submit" class="btn btn-update btn-primary btn-danger" [disabled]="formBuilder.invalid">
+        <i class="fas fa-check"></i> Update
+      </button>
+  </form>
+</div>

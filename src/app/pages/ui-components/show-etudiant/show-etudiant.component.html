@@ -1,0 +1,75 @@
+<!-- Ajoutez la liaison vers le fichier Bootstrap CSS dans votre fichier index.html -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Ajoutez la liaison vers le fichier Font Awesome CSS dans votre fichier index.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<div>
+<div>
+  <h1>Etudiants</h1>
+  <button (click)="navigateToUadd()" class="btn btn-primary">ADD Etudiant</button>
+  <div class="col-1" style="display: flex; align-items: center;">
+
+</div>
+<div class="row">
+<div class="col-md-3 offset-md-9">
+  <h2>Search</h2>
+  <div class="mb-1">
+  <input id="nom" class="form-control" style="border : 1px solid rgba(27, 27, 27, 0.368) " placeholder="Entrer le nomde l'étudiant..." [(ngModel)]="searchTerm" (input)="advancedSearch()" />   
+</div>
+</div>
+
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Date de naissance</th>
+      <th>Cin</th>
+      <th>Ecole</th>
+      <th>Action</th>
+    </tr>
+
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let etudiant of getEtudiantsForPage()">
+    <tr *ngFor="let e of Etudiants">
+      
+      <td>{{e.nomEt}}</td>
+      <td>{{e.prenomEt}}</td>
+      <td>{{ e.dateNaissance ? (e.dateNaissance | date:'dd/MM/yyyy') : 'N/A' }}</td>
+      <td>{{e.cin}}</td>
+      <td>{{e.ecole}}</td>
+      <td>
+       
+       
+       
+        <button type="button"   [ngClass]="['btn', 'btn-danger']" data-toggle="modal" data-target="#danger-alert-modal" style="margin-right: 20px; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" (click)="deleteEtudiant(e.idEtudiant)" [routerLink]=[deleteEtudiant]>
+          <i class="fa fa-trash-o" style="font-size:18px"></i>  Delete
+      </button> 
+      <button style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"  (click)="navigateToUpdate(e.idEtudiant)" [routerLink]=[update]  class="btn waves-effect waves-light btn-warning">
+          <i class="fa fa-edit" style="font-size:18px"></i> Edit
+      </button>
+      </td>
+    </tr>
+  
+    </tbody>
+  </table>
+  <div>
+    Lignes par page:
+    <select (change)="changeItemsPerPage($event)">
+      <option *ngFor="let option of itemsPerPageOptions" [value]="option" [selected]="itemsPerPage === option">
+        {{ option }}
+      </option>
+    </select>
+  </div>   
+
+  
+<div>
+  <button (click)="prevPage()" [disabled]="page === 1"mat-flat-button color="accent">Précédent</button>
+  <span>Page {{ page }} de {{ totalPages() }}</span>
+  <button (click)="nextPage()" [disabled]="page === totalPages()"mat-flat-button color="accent">Suivant</button>
+</div>
+</div>
+</div>
+</div>

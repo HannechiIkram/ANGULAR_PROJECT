@@ -1,5 +1,6 @@
+import { Universite } from "../pages/ui-components/universite/models/Universite";
 import { Bloc } from "./bloc";
-import { Universite } from "./universite";
+
 
 
 export class Foyer {
@@ -10,5 +11,5 @@ export class Foyer {
     createdAt!:Date;
     updatedAt!:Date;
     universite !:Universite ;
-    bloc!:Bloc;
+    blocs!:Bloc[];
 }

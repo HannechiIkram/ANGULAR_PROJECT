@@ -40,6 +40,9 @@ import { BlocInputValidatorDirective } from './bloc-input-validator.directive';
 import { ImageComponent } from './image/image.component';
 import { DetailBlocComponent } from './detail-bloc/detail-bloc.component';
 import { AddReservationComponent } from './pages/ui-components/add-reservation/add-reservation.component';
+import { Foyer } from './models/foyer';
+import { Bloc } from './models/bloc';
+import { Universite } from './pages/ui-components/universite/models/Universite';
 
 
 @NgModule({
@@ -79,7 +82,7 @@ import { AddReservationComponent } from './pages/ui-components/add-reservation/a
   ],
   exports: [TablerIconsModule],
   bootstrap: [AppComponent],
-  providers: [UserGuard,AdminGuard],
+  providers: [UserGuard,AdminGuard,Foyer,Bloc,Universite],
 
 })
 export class AppModule {}

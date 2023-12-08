@@ -1,5 +1,13 @@
-<!-- Add Bootstrap classes to the table -->
-<table id="pdfTable" class="table table-bordered text-nowrap mb-5 align-middle">
+<div class="container mt-4">
+  <h2>Search Blocs</h2>
+  <div class="mb-3">
+    <label for="nom" class="form-label">Enter Name:</label>
+    <input id="nom" [(ngModel)]="searchTerm" (input)="advancedSearch()" class="form-control">
+  </div>
+</div>
+
+
+<table id="pdfTable" class="table  text-nowrap mb-5 align-middle">
   <thead class="text-dark fs-4">
     <tr>
       <th class="border-bottom-1">
@@ -20,8 +28,9 @@
         <p class="mb-0 fw-normal">{{ bloc.capaciteBloc }}</p>
       </td>
       <td class="border-bottom-0">
-        <button class="btn btn-danger" (click)="deleteBloc(bloc.idBloc)">Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteBloc(bloc.idBloc)">Delete</button>
         <button class="btn btn-primary" (click)="update(bloc)">Update</button>
+        <button class="btn btn-primary" (click)="navigateToDetaillBloc(bloc.idBloc)">Detail</button>
       </td>
     </tr>
   </tbody>
@@ -33,9 +42,7 @@
 </button>
 
 <div class="pagination">
-  <button class="btn btn-secondary btn-sm" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>{{ currentPage }} / {{ totalPages }}</span>
-  <button class="btn btn-secondary btn-sm" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  <!-- ... other content ... -->
 </div>
 
 <!-- Keep the app-update-bloc component unchanged -->

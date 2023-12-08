@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+  <!----   <button (click)="goBack()" mat-flat-button color="accent">Retourner</button>-->
+      
+      
+      <h3>Add  Etudiant</h3>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="saveEtudiant(etudiant)">
+        <div class="form-group">
+          
+       
+        </div>
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>Nom:</mat-label>
+          <input matInput type="text" id="name" class="form-control" name="name" required minlength="3"
+          [(ngModel)]="etudiant.name" #name="ngModel"  appErrorMessageStyle>
+          <span *ngIf="name.invalid && name.touched"></span>
+          <span *ngIf="name.errors?.['required']">
+              
+             </span>
+             <span *ngIf="name.errors?.['minlength']">
+               Name should have at least 3 characters.
+             </span>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>Prenom:</mat-label>
+          <input matInput type="text" id="surname" class="form-control" name="surname" required
+                 [(ngModel)]="etudiant.surname"  appErrorMessageStyle>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>Date de naissance:</mat-label>
+          <input matInput type="date" id="dateNaissance" class="form-control" name="dateNaissance" required
+                 [(ngModel)]="etudiant.dateNaissance"  appErrorMessageStyle>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>CIN:</mat-label>
+          <input matInput type="text" id="cin" class="form-control" name="cin" pattern="[0-9]*"
+                 [(ngModel)]="etudiant.cin" #cin="ngModel"  appErrorMessageStyle>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" class="w-50">
+          <mat-label>Ecole:</mat-label>
+          <input matInput type="text" id="ecole" class="form-control" name="ecole" required
+                 [(ngModel)]="etudiant.ecole"  appErrorMessageStyle>
+        </mat-form-field>
+        <button type="submit" mat-flat-button color="accent" class="w-10">Enregistrer</button>
+      </form>
+    </div>
+  </div>
+  

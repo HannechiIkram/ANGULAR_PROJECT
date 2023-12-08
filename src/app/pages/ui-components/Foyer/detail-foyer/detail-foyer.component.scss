@@ -1,0 +1,62 @@
+.foyer-details {
+  .container {
+    max-width: 800px; // Adjust the maximum width as needed
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .btn {
+    margin-right: 10px;
+  }
+}
+
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+
+  &:hover {
+    background-color: #0056b3;
+    border: 1px solid #0056b3;
+  }
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+  border: 1px solid #28a745;
+
+  &:hover {
+    background-color: #218838;
+    border: 1px solid #218838;
+  }
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: 1px solid #dc3545;
+
+  &:hover {
+    background-color: #c82333;
+    border: 1px solid #c82333;
+  }
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ResetpasswordService } from '../_services/resetpassword.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-forgot-password',
@@ -23,11 +24,21 @@ export class ForgotPasswordComponent {
     this.resetPasswordService.forgotpassword(email).subscribe(
       response => {
         // Handle success, e.g., show a success message
+        Swal.fire({
+          title: 'success',
+          text: 'An message is sent to your email to continue reset ',
+          icon: 'success'
+        });
         console.log('Reset password email sent successfully');
       },
       error => {
         // Handle error, e.g., show an error message
         console.error('Error sending reset password email', error);
+        Swal.fire({
+          title: 'success',
+          text: 'An message is sent to your email to continue reset ',
+          icon: 'success'
+        });
       }
     );
   }

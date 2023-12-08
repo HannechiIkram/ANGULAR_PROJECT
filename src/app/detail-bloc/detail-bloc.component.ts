@@ -31,7 +31,9 @@ export class DetailBlocComponent implements OnInit {
     );
   }
 
-
+  navigateToDetaillBloc() {
+    this.router.navigate(['content/showBloc']);
+  }
 
   downloadPDF() {
     if (this.bloc) {

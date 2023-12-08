@@ -22,12 +22,12 @@ export class FactureComponent {
   }
 
   onAddClick() {
-    this.router.navigate(['/ui-components/add-facture'])
+    this.router.navigate(['/content/add-facture'])
     this.addFactureClick.emit();
   }
 
   onEditClick(id: number) {
-    this.router.navigate(['/ui-components/add-facture', { factureId: id }]);
+    this.router.navigate(['/content/add-facture', { factureId: id }]);
     this.editFactureClick.emit(id);
   }
   loadFacture() {
@@ -59,7 +59,7 @@ advancedSearch() {
 }
 
 goToDetailFacture(id: number) {
-  this.router.navigate(['/ui-components/detailFacture', id]);
+  this.router.navigate(['/content/detailFacture', id]);
 }
 
 

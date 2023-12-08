@@ -62,7 +62,7 @@ deleteReservation(id: number){
 
 
   getAllEtudiants(): Observable<Etudiant[]> {
-    return this.http.get<Etudiant[]>("http://localhost:8081/findAllEtudiant");
+    return this.http.get<Etudiant[]>("http://localhost:8081/api/etudiants/findAllEtudiant");
   }
 
   getAllChambres(): Observable<Chambre[]> {

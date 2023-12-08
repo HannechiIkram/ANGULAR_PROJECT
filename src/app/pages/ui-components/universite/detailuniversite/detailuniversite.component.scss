@@ -1,0 +1,28 @@
+/* Your custom SCSS */
+
+.container {
+    max-width: 600px; /* Adjust as needed */
+  }
+  
+  .card {
+    border: 1px solid #ddd; /* Add a border to the card */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  }
+  
+  .card-body {
+    padding: 20px; /* Add padding inside the card body */
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Gray color for secondary buttons */
+    border-color: #6c757d; /* Gray color for border */
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+    border-color: #5a6268; /* Darker gray on hover */
+  }
+  
+  /* Add more custom styles as needed */
+  

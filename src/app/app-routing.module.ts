@@ -15,6 +15,10 @@ import { DetailBlocComponent } from './detail-bloc/detail-bloc.component';
 
 
 const routes: Routes = [
+
+
+  
+
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password/:token', component: ResetPasswordComponent },
   {path:'addBloc',component:AddBlocComponent},
@@ -47,7 +51,7 @@ const routes: Routes = [
           import('./pages/pages.module').then((m) => m.PagesModule),
       },
       {
-        path: 'ui-components',
+        path: 'content',
         canActivate:[UserGuard],
         loadChildren: () =>
           import('./pages/ui-components/ui-components.module').then(
@@ -60,11 +64,19 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
+      {
+        path: 'foyer',
+        canActivate:[UserGuard],
+        loadChildren: () =>
+          import('./pages/ui-components/Foyer/foyer.module').then(
+            (module) => module.FoyerModule
+          ),
+      },
     ],
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'login', canActivate:[UserGuard], component: LoginComponent },
+  { path: 'register',  canActivate:[UserGuard],component: RegisterComponent },
+  { path: 'profile', canActivate:[UserGuard], component: ProfileComponent },
   
   { path: '', redirectTo: 'home', pathMatch: 'full' },
  
@@ -81,7 +93,13 @@ const routes: Routes = [
       },
     ],
   },
+
+
+  
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

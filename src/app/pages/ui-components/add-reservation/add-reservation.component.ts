@@ -95,7 +95,7 @@ export class AddReservationComponent {
     this.serviceReservation.addReservationWithChamber(this.reservation,myNumber,myNumber1).subscribe(
       (d) => {
         console.log(d);
-        this.router.navigate(['/ui-components/reservation']);
+        this.router.navigate(['/content/reservation']);
       }
     );
   }

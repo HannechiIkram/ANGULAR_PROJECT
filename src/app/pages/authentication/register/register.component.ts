@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -46,10 +47,20 @@ export class AppSideRegisterComponent {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        Swal.fire({
+          title: 'Added!',
+          text: 'User registered ',
+          icon: 'success'
+        });
       },
       error: err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
+        Swal.fire({
+          title: 'error!',
+          text: 'there is an error with register ',
+          icon: 'error'
+        });
       }
     });
   }

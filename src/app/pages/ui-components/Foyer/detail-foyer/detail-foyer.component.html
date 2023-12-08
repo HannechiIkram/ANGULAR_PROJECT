@@ -1,0 +1,31 @@
+<div *ngIf="foyer" class="foyer-details">
+  <div class="container mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ foyer.nomFoyer }}</h5>
+        <p class="card-text">Capacité: {{ foyer.capaciteFoyer }}</p>
+        <p class="card-text">Created At: {{ foyer.createdAt | date:'yy-MM-dd' }}</p>
+        <p class="card-text">Updated At: {{ foyer.updatedAt | date:'yy-MM-dd' }}</p>
+        <ng-container *ngIf="foyer.universite?.nomUniversite">
+          <p class="card-text">Université: {{ foyer.universite?.nomUniversite }}</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3">
+    <button class="btn btn-primary" (click)="downloadPDF()">Download PDF</button>
+    <button class="btn btn-primary" (click)="downloadExcel()">Download Excel</button>
+    
+    <span>
+      <button
+        (click)="desaffecterBlocs(foyer.idFoyer)"
+        [disabled]="foyer.blocs.length === 0"
+        class="btn btn-danger btn-sm"
+      >
+        <i class="fas fa-trash-alt"></i> Unassign
+      </button>
+    </span>
+    <button class="btn btn-success" (click)="navigateToShowFoyer()">Back</button>
+  </div>
+</div>

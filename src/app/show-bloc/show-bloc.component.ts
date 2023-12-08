@@ -3,6 +3,8 @@ import { BlocService } from '../bloc.service';
 import { Bloc } from '../models/bloc';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBlocComponent } from '../add-bloc/add-bloc.component';
+import Swal from 'sweetalert2';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-bloc',
@@ -15,9 +17,12 @@ export class ShowBlocComponent implements OnInit {
   blocToUpdate: Bloc;
   showFormAdd = false;
 
-  constructor(private b: BlocService, public dialog: MatDialog) {}
+  constructor(private b: BlocService, public dialog: MatDialog,private router:Router) {}
 
   ngOnInit(): void {
+  this.showblocs();
+  }
+  showblocs(){
     this.b.showBloc().subscribe(
       res => {
         this.totalBlocs = res.length;
@@ -27,20 +32,63 @@ export class ShowBlocComponent implements OnInit {
     );
   }
 
-  deleteBloc(idbloc: number) {
-    this.b.deleteBloc(idbloc).subscribe(
-      () => {
-        const index = this.blocs.findIndex(bloc => bloc.idBloc === idbloc);
+  searchTerm: string = '';
+  advancedSearch() {
+    if (this.searchTerm.length >= 2) {
+      // Perform the search based on the first two characters
+      const filteredFoyers = this.blocs.filter(bloc => {
+        const firstTwoChars = bloc.nomBloc.substring(0, 2).toLowerCase();
+        return firstTwoChars.includes(this.searchTerm.toLowerCase());
+      });
 
-        if (index !== -1) {
-          this.blocs.splice(index, 1);
-        }
-      },
-      error => {
-        console.error('Error deleting bloc:', error);
-      }
-    );
+      // Update the displayed foyers with the filtered results
+      this.blocs = filteredFoyers;
+    } else {
+      // If the search term is less than two characters, reset the foyers to the original data
+      this.showblocs();
+    }
   }
+ 
+
+  deleteBloc(idbloc: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.b.deleteBloc(idbloc).subscribe(
+          () => {
+            const index = this.blocs.findIndex(bloc => bloc.idBloc === idbloc);
+  
+            if (index !== -1) {
+              this.blocs.splice(index, 1);
+            }
+  
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'The Bloc has been deleted successfully.',
+              icon: 'success'
+            });
+          },
+          (error) => {
+            console.error('Error deleting Bloc:', error);
+            Swal.fire({
+              title: 'Error!',
+              text: 'An error occurred while deleting the Bloc.',
+              icon: 'error'
+            });
+          }
+        );
+      }
+    });
+  }
+  
 
   update(bloc: any) {
     console.log(bloc);
@@ -68,6 +116,10 @@ export class ShowBlocComponent implements OnInit {
 
   addElementToTab(e: any) {
     this.blocs.push(e);
+  }
+
+  navigateToDetaillBloc(fId: number) {
+    this.router.navigate(['content/detailBloc',fId]);
   }
 
   openDialog() {

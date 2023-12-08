@@ -1,9 +1,8 @@
 export class Etudiant{
-    sub!: string;
-    exp!: number;
-    email!: string;
-    role!: string;
-    nomEt !: string;
-    prenomEt!: string
+    idEtudiant!: number;
+    nomEt!: string;
+    prenomEt!: string;
     cin!: number;
+    ecole!: string;
+    dateNaissance!: Date
 }
